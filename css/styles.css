@@ -26,7 +26,11 @@ a:hover {
 }
 
 /* Sombra Imagens */
-.principal img{
+.principal{
+    box-shadow: 4px 8px 10px #ccc;
+}
+
+.box-shadow {
     box-shadow: 4px 8px 10px #ccc;
 }
 
@@ -52,6 +56,13 @@ box-shadow: 6px 10px 12px #ccc;
 .exibe-titulo{
     background-image: linear-gradient(180deg, transparent 65%, rgb(243, 243, 243) 0);
     background-repeat: no-repeat;
+}
+
+.board {
+    width: 920px;
+}
+.card {
+    background-color: rgb(18, 13, 29);
 }
 
 /* Extra small devices (phones, 600px and down) */
