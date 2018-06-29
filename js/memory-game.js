@@ -1,0 +1,1 @@
+$('#card').flip({reverse:true});
