@@ -1,4 +1,4 @@
-html{
+html {
     box-sizing: border-box;
 }
 
@@ -9,8 +9,8 @@ html{
 
 html,
 body {
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     margin: 0;
     padding: 0;
 }
@@ -25,8 +25,8 @@ h1 {
 }
 
 h2 {
-   color: #7d97ad;
-   font-weight: 300;
+    color: #7d97ad;
+    font-weight: 300;
 }
 
 h3 {
@@ -42,6 +42,7 @@ a:hover {
 }
 
 /* Sombra Imagens */
+
 .box-shadow {
     box-shadow: 4px 8px 10px #ccc;
 }
@@ -56,16 +57,16 @@ footer {
 }
 
 .featured-work img:hover {
-transform: translateY(-2px);
-transition: all .2s ease-in-out;
-box-shadow: 6px 10px 12px #ccc;
+    transform: translateY(-2px);
+    transition: all .2s ease-in-out;
+    box-shadow: 6px 10px 12px #ccc;
 }
 
-#meu-cabecalho h1{
+#meu-cabecalho h1 {
     margin: auto;
 }
 
-.exibe-titulo{
+.exibe-titulo {
     background-image: linear-gradient(180deg, transparent 65%, rgb(243, 243, 243) 0);
     background-repeat: no-repeat;
 }
@@ -74,36 +75,44 @@ box-shadow: 6px 10px 12px #ccc;
     width: 920px;
     text-align: center;
 }
+
 /* CARD GAME */
-#card{
-    box-sizing: border-box;
-    margin: 0 auto;
-    text-align:center;
-  }
 
-  .front, .back {
-    box-sizing: border-box;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 10px 20px rgba(0,0,0, 0.5);
-  }
+.card-game {
+    margin: 20px auto;
+    text-align: center;
+    flex-wrap: wrap;
+}
 
-  .back{
-    background-color: #ffffcc;
-  }
+.front,
+.back {
+    max-width: 200px;
+    max-height: 200px;
+    padding: 25px 0;
+    text-align: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    vertical-align: middle;
+    display: table-cell;
+}
 
-  .front{
+.back {
+    background-color: #137575;
+}
+
+.front {
     background-color: #e6ffff;
-  }
+}
+
 /* END CARD GAME */
 
 /* Extra small devices (phones, 600px and down) */
-@media (max-width: 575.98px)  {
-    #meu-cabecalho h1{
+
+@media (max-width: 575.98px) {
+    #meu-cabecalho h1 {
         font-size: 1.5rem;
         padding-top: 10px;
     }
-    #logo-box{
+    #logo-box {
         margin: auto;
     }
     #logotipo-image {
@@ -116,8 +125,9 @@ box-shadow: 6px 10px 12px #ccc;
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
+
 @media (min-width: 576px) and (max-width: 767.98px) {
-    #logo-box{
+    #logo-box {
         margin: auto;
     }
     #logotipo-image {
@@ -127,7 +137,8 @@ box-shadow: 6px 10px 12px #ccc;
 }
 
 /* Exibição para dispositivos médios. Ex. tablets */
-@media (min-width: 768px) and (max-width: 991.98px){
+
+@media (min-width: 768px) and (max-width: 991.98px) {
     #logotipo-image {
         width: 150px;
         height: 58px;
@@ -135,6 +146,7 @@ box-shadow: 6px 10px 12px #ccc;
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
+
 @media (min-width: 992px) and (max-width: 1199.98px) {
     #logotipo-image {
         width: 160px;
@@ -143,6 +155,7 @@ box-shadow: 6px 10px 12px #ccc;
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
+
 @media only screen and (min-width: 1200px) {
     #logotipo-image {
         width: 170px;
