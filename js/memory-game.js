@@ -10,6 +10,10 @@
  *   - add each card's HTML to the page
  */
 
+$(function () {
+    embaralhar();
+})
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
@@ -26,12 +30,88 @@ function shuffle(array) {
     return array;
 }
 
+var contaMovimento = 0;
+var array = [];
+var isOpen = 0;
+var opt1 = "";
+var opt2 = "";
+var finalDeJogo = 0;
+
+$('.card').each(function () {
+    array.push($(this).html());
+});
+
+
+$('.restart').on('click', function () {
+    embaralhar();
+});
+
 
 $('.deck').on('click', ' .card ', function (evt) {
-    console.log('the card was clicked');
-    $(this).toggleClass('open show');
-    // $(this).first().css('background','green');
+    contaMovimento++;
+    if (!$(this).hasClass('match')) {
+        if (!$(this).hasClass('open') && isOpen <= 1) {
+            regrasJogo($(this));
+            crush(opt1, opt2, $(this));
+        }
+        $('.moves').text(contaMovimento)
+    }
+    console.log(isOpen);
 });
+
+function regrasJogo(clique) {
+    opt1 == "" ? opt1 = $(clique).html() : opt2 = $(clique).html();
+    $(clique).addClass('open show');
+    isOpen++;
+}
+
+
+function crush(clique1, clique2, clique) {
+    if (clique2 != "") {
+        if (clique1 == clique2) {
+            $('.show').addClass('match');
+            $(clique).removeClass('open show');
+            ganhador();
+        } else {
+            setTimeout(function () {
+                $('.card').removeClass('open show')
+            }, 500);
+        }
+        resetar();
+    }
+}
+
+function embaralhar() {
+    var contador = 0;
+    // zera contagem de movimentos
+    contaMovimento = 0;
+    //embaralha icones
+    array = shuffle(array);
+    $('.card').removeClass('open show match')
+    $('.card').each(function () {
+        $(this).children().remove();
+        $('.moves').text(contaMovimento);
+        $(this).append(array[contador]);
+        contador++;
+    });
+}
+
+function resetar (){
+    isOpen = 0;
+    opt1 = "";
+    opt2 = "";
+}
+
+function ganhador(){
+    finalDeJogo++;
+    if(finalDeJogo == 8){
+        setTimeout(function () {
+        alert("Fim de jogo. Você terminout com  " + contaMovimento + " cliques. \nTente superar seu recorde, clique em ok para jogar novamente.");
+        resetar();
+        embaralhar();
+        }, 500);
+    }
+}
 
 
 
