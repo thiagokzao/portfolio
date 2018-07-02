@@ -9,6 +9,7 @@
  *   - add each card's HTML to the page
  */
 
+ // Embaralhamento do jogo
 $(function () {
     embaralhar();
 })
@@ -25,13 +26,12 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
-var contaMovimento = 0;
-var array = [];
-var isOpen = 0;
+var contaMovimento = 0;  //contador de cliques
+var array = []; //armazena icones default
+var isOpen = 0; //controle de cartas viradas
 var opt1 = "";
 var opt2 = "";
 var finalDeJogo = 0;
@@ -45,7 +45,7 @@ $('.restart').on('click', function () {
     embaralhar();
 });
 
-
+// Função ouvinte dos eventos
 $('.deck').on('click', ' .card ', function (evt) {
     contaMovimento++;
     if (!$(this).hasClass('match')) {
@@ -97,9 +97,9 @@ function embaralhar() {
 
 function resetar (){
     isOpen = 0;
-    opt1 = "";
+    opt1 = ""; 
     opt2 = "";
-    finalDeJogo == 0;
+    finalDeJogo = 0;
 }
 
 function ganhador(){
