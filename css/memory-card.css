@@ -17,7 +17,8 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/geometry2.png');
+    /* Background pattern from Subtle Patterns */
     font-family: 'Raleay', Arial, Helvetica, sans-serif;
     color: #333333;
     font-size: 18px;
@@ -82,6 +83,322 @@ h1 {
     font-size: 33px;
 }
 
+/* 
+* Card effects
+*/
+
+.deck .card.wrong {
+    -moz-animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    -webkit-animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    -ms-animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    -o-animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    background-color: #eb5c52;
+}
+
+@-webkit-keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+@-moz-keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+@-ms-keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+@-o-keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.deck .card.match {
+    -webkit-animation-name: wiggle;
+    -moz-animation-name: wiggle;
+    -ms-animation-name: wiggle;
+    -o-animation-name: wiggle;
+    animation-name: wiggle;
+    -webkit-animation-timing-function: ease-in;
+    -moz-animation-timing-function: ease-in;
+    -ms-animation-timing-function: ease-in;
+    -o-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -ms-animation-duration: 1s;
+    -o-animation-duration: 1s;
+}
+
+@-webkit-keyframes wiggle {
+    0% {
+        -webkit-transform: skewX(9deg);
+    }
+    10% {
+        -webkit-transform: skewX(-8deg);
+    }
+    20% {
+        -webkit-transform: skewX(7deg);
+    }
+    30% {
+        -webkit-transform: skewX(-6deg);
+    }
+    40% {
+        -webkit-transform: skewX(5deg);
+    }
+    50% {
+        -webkit-transform: skewX(-4deg);
+    }
+    60% {
+        -webkit-transform: skewX(3deg);
+    }
+    70% {
+        -webkit-transform: skewX(-2deg);
+    }
+    80% {
+        -webkit-transform: skewX(1deg);
+    }
+    90% {
+        -webkit-transform: skewX(0deg);
+    }
+    100% {
+        -webkit-transform: skewX(0deg);
+    }
+}
+
+@-moz-keyframes wiggle {
+    0% {
+        -moz-transform: skewX(9deg);
+    }
+    10% {
+        -moz-transform: skewX(-8deg);
+    }
+    20% {
+        -moz-transform: skewX(7deg);
+    }
+    30% {
+        -moz-transform: skewX(-6deg);
+    }
+    40% {
+        -moz-transform: skewX(5deg);
+    }
+    50% {
+        -moz-transform: skewX(-4deg);
+    }
+    60% {
+        -moz-transform: skewX(3deg);
+    }
+    70% {
+        -moz-transform: skewX(-2deg);
+    }
+    80% {
+        -moz-transform: skewX(1deg);
+    }
+    90% {
+        -moz-transform: skewX(0deg);
+    }
+    100% {
+        -moz-transform: skewX(0deg);
+    }
+}
+
+@-o-keyframes wiggle {
+    0% {
+        -moz-transform: skewX(9deg);
+    }
+    10% {
+        -moz-transform: skewX(-8deg);
+    }
+    20% {
+        -moz-transform: skewX(7deg);
+    }
+    30% {
+        -moz-transform: skewX(-6deg);
+    }
+    40% {
+        -moz-transform: skewX(5deg);
+    }
+    50% {
+        -moz-transform: skewX(-4deg);
+    }
+    60% {
+        -moz-transform: skewX(3deg);
+    }
+    70% {
+        -moz-transform: skewX(-2deg);
+    }
+    80% {
+        -moz-transform: skewX(1deg);
+    }
+    90% {
+        -moz-transform: skewX(0deg);
+    }
+    100% {
+        -moz-transform: skewX(0deg);
+    }
+}
+
+@-ms-keyframes wiggle {
+    0% {
+        -ms-transform: skewX(9deg);
+    }
+    10% {
+        -ms-transform: skewX(-8deg);
+    }
+    20% {
+        -ms-transform: skewX(7deg);
+    }
+    30% {
+        -ms-transform: skewX(-6deg);
+    }
+    40% {
+        -ms-transform: skewX(5deg);
+    }
+    50% {
+        -ms-transform: skewX(-4deg);
+    }
+    60% {
+        -ms-transform: skewX(3deg);
+    }
+    70% {
+        -ms-transform: skewX(-2deg);
+    }
+    80% {
+        -ms-transform: skewX(1deg);
+    }
+    90% {
+        -ms-transform: skewX(0deg);
+    }
+    100% {
+        -ms-transform: skewX(0deg);
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: skewX(9deg);
+    }
+    10% {
+        transform: skewX(-8deg);
+    }
+    20% {
+        transform: skewX(7deg);
+    }
+    30% {
+        transform: skewX(-6deg);
+    }
+    40% {
+        transform: skewX(5deg);
+    }
+    50% {
+        transform: skewX(-4deg);
+    }
+    60% {
+        transform: skewX(3deg);
+    }
+    70% {
+        transform: skewX(-2deg);
+    }
+    80% {
+        transform: skewX(1deg);
+    }
+    90% {
+        transform: skewX(0deg);
+    }
+    100% {
+        transform: skewX(0deg);
+    }
+}
+
+animation-duration: 1s;
+}
+
 /*
  * Styles for the Score Panel
  */
@@ -108,6 +425,7 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
 .game-header {
     text-align: center;
 }
