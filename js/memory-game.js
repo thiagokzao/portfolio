@@ -16,7 +16,7 @@ var isOpen = 0; //controle de cartas viradas
 var opt1 = ""; //armazena primeiro clique
 var opt2 = ""; // armazena segundo clique
 var finalDeJogo = 0; // controle de fim de jogo
-var best = 0; // armazena melhor jogada
+var record = 0; // armazena melhor jogada
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -43,17 +43,13 @@ $('.card').each(function () {
     array.push($(this).html());
 });
 
-// reseta jogo
-$('.restart').on('click', function () {
-    embaralhar();
-});
 
 // Função ouvinte dos eventos
 $('.deck').on('click', ' .card ', function (evt) {
     contaMovimento++;
     if (!$(this).hasClass('match')) {
         if (!$(this).hasClass('open') && isOpen <= 1) {
-            controlaClique($(this));
+            mostraCarta($(this));
             crush(opt1, opt2, $(this));
         }
         $('.moves').text(contaMovimento)
@@ -61,14 +57,20 @@ $('.deck').on('click', ' .card ', function (evt) {
     console.log(isOpen);
 });
 
+// embaralha o jogo
+$('.restart').on('click', function () {
+    embaralhar();
+    $('.msg-modal').remove(); //remove mensagem do modal
+});
+
 //Função de controle de clique
-function controlaClique(clique) {
+function mostraCarta(clique) {
     opt1 == "" ? opt1 = $(clique).html() : opt2 = $(clique).html();
     $(clique).addClass('open show');
     isOpen++;
 }
 
-// Funçao que controla cartas abertas
+// Funçao que controla cartas abertas e verifica se deu crush ;D
 function crush(clique1, clique2, clique) {
     if (clique2 != "") {
         if (clique1 == clique2) {
@@ -79,14 +81,11 @@ function crush(clique1, clique2, clique) {
             setTimeout(function () {
                 $('.show').addClass('wrong');
                 setTimeout(function () {
-                    $('.show').removeClass('open show wrong')
+                    $('.show').removeClass('open show wrong');
                 }, 500);
             }, 200);
-
-
-
         }
-        resetar();
+        controlaCliques();
     }
 }
 
@@ -107,7 +106,7 @@ function embaralhar() {
 }
 
 // Função que reiniciar os indeicadores
-function resetar() {
+function controlaCliques() {
     isOpen = 0;
     opt1 = "";
     opt2 = "";
@@ -123,17 +122,18 @@ function finalizaJogo() {
         // inicia um novo jogo
         $('#new-game').on('click', function () {
             $('#myModal').modal('hide');
-            if (best = 0 || best < contaMovimento) {
-                best = contaMovimento;
-                $('.best').text(best);
-                resetar();
+            console.log(record);
+            if (contaMovimento > 0) {
+                if (record == 0 || contaMovimento < record) {
+                    record = contaMovimento;
+                    $('.best').text(record);
+                }
+                controlaCliques();
+                $('.msg-modal').remove(); //remove mensagem do modal
                 embaralhar();
             }
-            //remove mensagem do modal
-            $('.msg-modal').remove();
         });
         finalDeJogo = 0;
-        $('.msg-modal').remove();
     }
 }
 
