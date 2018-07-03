@@ -18,6 +18,8 @@ var opt2 = ""; // armazena segundo clique
 var finalDeJogo = 0; // controle de fim de jogo
 var record = 0; // armazena melhor jogada
 var stars = 3;
+var iniciaContador = false;
+var tempo;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -115,6 +117,12 @@ function preparaJogo() {
         contador++;
     });
 
+    //reset timer
+    clearTimeout(t);
+    iniciaContador = false;
+    $('#timer').text("00:00:00")
+    seconds = 0; minutes = 0; hours = 0;
+
     //reseta estrelas
     if ($('.stars li').length < 3) {
         counting_stars = stars - $('.stars li').length;;
@@ -131,23 +139,16 @@ function controlaCliques() {
     opt2 = "";
 }
 
-// function rating() {
-//     if (contaMovimento == 28) {
-//         $('.stars li').first().remove()
-//     } else if (contaMovimento == 34) {
-//         $('.stars li').first().remove()
-//     } else if (contaMovimento == 40) {
-//         $('.stars li').first().remove()
-//     }
-// }
-
 //Funçao que finalizar o jogo
 function finalizaJogo() {
     finalDeJogo++;
     if (finalDeJogo == 8) {
+        // Stop timer
+        clearTimeout(t);
         //Chama modal fim de jogo
         $('#myModal').modal('show');
         $('.modal-body').append(`<p class="msg-modal">Você terminout com  ${contaMovimento} cliques. <br /><br />Tente superar seu recorde, clique em ok para jogar novamente.</p>`);
+        $('.modal-body').append('<p>Seu tempo: ' +  $('#timer').text() + '</p>');
         // inicia um novo jogo
         $('#new-game').on('click', function () {
             $('#myModal').modal('hide');
@@ -162,8 +163,18 @@ function finalizaJogo() {
             }
         });
         finalDeJogo = 0;
+        
     }
 }
+
+$('.card').on('click', function(){
+    if (!iniciaContador){
+        timer();
+    }
+    iniciaContador = true;
+    console.log(tempo);
+})
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
