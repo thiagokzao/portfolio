@@ -9,6 +9,12 @@
  *   - add each card's HTML to the page
  */
 
+
+ /*
+ *TODO: Store variables in local storage
+ *TODo: create leadboards
+ * 
+
 var contaMovimento = 0; // armazena contagem de cliques
 // TODO: criar array com lista de icones
 var array = []; //armazena icones do hardcoded no html
