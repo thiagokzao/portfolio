@@ -19,7 +19,6 @@ var finalDeJogo = 0; // controle de fim de jogo
 var record = 0; // armazena melhor jogada
 var stars = 3;
 
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length,
@@ -45,7 +44,6 @@ $('.card').each(function () {
     array.push($(this).html());
 });
 
-
 // Função ouvinte dos eventos
 $('.deck').on('click', ' .card ', function (evt) {
     contaMovimento++;
@@ -56,7 +54,13 @@ $('.deck').on('click', ' .card ', function (evt) {
         }
         $('.moves').text(contaMovimento)
     }
-    rating();
+    if (contaMovimento == 28) {
+        $('.stars li').first().remove()
+    } else if (contaMovimento == 34) {
+        $('.stars li').first().remove()
+    } else if (contaMovimento == 40) {
+        $('.stars li').first().remove()
+    }
 });
 
 // embaralha o jogo
@@ -100,7 +104,10 @@ function preparaJogo() {
     //embaralha icones
     array = shuffle(array);
 
-    $('.card').removeClass('open show match')
+    //Vira todas cartas para baixo
+    $('.card').removeClass('open show match');
+
+    //remove icones e adiciona em novas posiçoes
     $('.card').each(function () {
         $(this).children().remove();
         $('.moves').text(contaMovimento);
@@ -109,17 +116,13 @@ function preparaJogo() {
     });
 
     //reseta estrelas
-    var counting_stars = 0;
-    if ($('.stars li').length < 3){
-        counting_stars  = stars - $('.stars li').length;;
-        for (var i = 0; i < counting_stars ; i++){
+    if ($('.stars li').length < 3) {
+        counting_stars = stars - $('.stars li').length;;
+        for (var i = $('.stars li').length; i < 3; i++) {
             $('.stars').append('<li><i class="fa fa-star"></i></li>')
-            i++;
         }
     }
 }
-
-
 
 // Função que reiniciar os indeicadores
 function controlaCliques() {
@@ -128,15 +131,15 @@ function controlaCliques() {
     opt2 = "";
 }
 
-function rating() {
-    if (contaMovimento == 28) {
-        $('.stars li').first().remove()
-    } else if (contaMovimento == 34) {
-        $('.stars li').first().remove()
-    } else if (contaMovimento == 40) {
-        $('.stars li').first().remove()
-    }
-}
+// function rating() {
+//     if (contaMovimento == 28) {
+//         $('.stars li').first().remove()
+//     } else if (contaMovimento == 34) {
+//         $('.stars li').first().remove()
+//     } else if (contaMovimento == 40) {
+//         $('.stars li').first().remove()
+//     }
+// }
 
 //Funçao que finalizar o jogo
 function finalizaJogo() {
@@ -148,7 +151,6 @@ function finalizaJogo() {
         // inicia um novo jogo
         $('#new-game').on('click', function () {
             $('#myModal').modal('hide');
-            console.log(record);
             if (contaMovimento > 0) {
                 if (record == 0 || contaMovimento < record) {
                     record = contaMovimento;
@@ -162,7 +164,6 @@ function finalizaJogo() {
         finalDeJogo = 0;
     }
 }
-
 
 /*
  * set up the event listener for a card. If a card is clicked:
