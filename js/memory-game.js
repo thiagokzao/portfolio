@@ -133,6 +133,7 @@ function finalizaJogo() {
             $('.msg-modal').remove();
         });
         finalDeJogo = 0;
+        $('.msg-modal').remove();
     }
 }
 
