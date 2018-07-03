@@ -17,6 +17,8 @@ var opt1 = ""; //armazena primeiro clique
 var opt2 = ""; // armazena segundo clique
 var finalDeJogo = 0; // controle de fim de jogo
 var record = 0; // armazena melhor jogada
+var stars = 3;
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -35,7 +37,7 @@ function shuffle(array) {
 
 // Embaralhamento do jogo inicial
 $(function () {
-    embaralhar();
+    preparaJogo();
 })
 
 // armazena icones
@@ -54,12 +56,12 @@ $('.deck').on('click', ' .card ', function (evt) {
         }
         $('.moves').text(contaMovimento)
     }
-    console.log(isOpen);
+    rating();
 });
 
 // embaralha o jogo
 $('.restart').on('click', function () {
-    embaralhar();
+    preparaJogo();
     $('.msg-modal').remove(); //remove mensagem do modal
 });
 
@@ -90,12 +92,14 @@ function crush(clique1, clique2, clique) {
 }
 
 // Funcão de embaralhamento
-function embaralhar() {
+function preparaJogo() {
     var contador = 0;
     // zera contagem de movimentos
     contaMovimento = 0;
+
     //embaralha icones
     array = shuffle(array);
+
     $('.card').removeClass('open show match')
     $('.card').each(function () {
         $(this).children().remove();
@@ -103,13 +107,35 @@ function embaralhar() {
         $(this).append(array[contador]);
         contador++;
     });
+
+    //reseta estrelas
+    var counting_stars = 0;
+    if ($('.stars li').length < 3){
+        counting_stars  = stars - $('.stars li').length;;
+        for (var i = 0; i < counting_stars ; i++){
+            $('.stars').append('<li><i class="fa fa-star"></i></li>')
+            i++;
+        }
+    }
 }
+
+
 
 // Função que reiniciar os indeicadores
 function controlaCliques() {
     isOpen = 0;
     opt1 = "";
     opt2 = "";
+}
+
+function rating() {
+    if (contaMovimento == 28) {
+        $('.stars li').first().remove()
+    } else if (contaMovimento == 34) {
+        $('.stars li').first().remove()
+    } else if (contaMovimento == 40) {
+        $('.stars li').first().remove()
+    }
 }
 
 //Funçao que finalizar o jogo
@@ -130,7 +156,7 @@ function finalizaJogo() {
                 }
                 controlaCliques();
                 $('.msg-modal').remove(); //remove mensagem do modal
-                embaralhar();
+                preparaJogo();
             }
         });
         finalDeJogo = 0;
