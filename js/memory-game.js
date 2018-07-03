@@ -30,12 +30,13 @@ function shuffle(array) {
 }
 
 var contaMovimento = 0; //contador de cliques
-var array = []; //armazena icones default
+// TODO: criar array com lista de icones
+var array = []; //armazena icones do hardcoded no html 
 var isOpen = 0; //controle de cartas viradas
-var opt1 = "";
+var opt1 = ""; //
 var opt2 = "";
-var finalDeJogo = 0;
-var best = 0;
+var finalDeJogo = 0; // controle 
+var best = 0; // armazena melhor jogada
 
 $('.card').each(function () {
     array.push($(this).html());
@@ -69,12 +70,18 @@ function crush(clique1, clique2, clique) {
     if (clique2 != "") {
         if (clique1 == clique2) {
             $('.show').addClass('match');
-            $(clique).removeClass('open show');
+            $('.show').removeClass('open show');
             ganhador();
         } else {
             setTimeout(function () {
-                $('.card').removeClass('open show')
-            }, 500);
+                $('.show').addClass('wrong');
+                setTimeout(function () {
+                    $('.show').removeClass('open show wrong')
+                }, 500);
+            }, 200);
+
+
+
         }
         resetar();
     }
@@ -117,7 +124,7 @@ function ganhador() {
                 embaralhar();
             }
             //remove mensagem do modal
-            $('.msg-modal').remove(); 
+            $('.msg-modal').remove();
         });
         finalDeJogo = 0;
         // setTimeout(function () {
@@ -128,6 +135,18 @@ function ganhador() {
         // }, 500);
     }
 }
+
+// function runEffect() {
+//     var options = {};
+
+//     $(".card").effect(selectedEffect, options, 500, callback);
+// };
+
+// function callback() {
+//     setTimeout(function () {
+//         $(".card").removeAttr("style").hide().fadeIn();
+//     }, 1000);
+// };
 
 
 
