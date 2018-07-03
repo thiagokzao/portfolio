@@ -9,7 +9,7 @@
  *   - add each card's HTML to the page
  */
 
- // Embaralhamento do jogo
+// Embaralhamento do jogo
 $(function () {
     embaralhar();
 })
@@ -29,17 +29,17 @@ function shuffle(array) {
     return array;
 }
 
-var contaMovimento = 0;  //contador de cliques
+var contaMovimento = 0; //contador de cliques
 var array = []; //armazena icones default
 var isOpen = 0; //controle de cartas viradas
 var opt1 = "";
 var opt2 = "";
 var finalDeJogo = 0;
+var best = 0;
 
 $('.card').each(function () {
     array.push($(this).html());
 });
-
 
 $('.restart').on('click', function () {
     embaralhar();
@@ -95,21 +95,37 @@ function embaralhar() {
     });
 }
 
-function resetar (){
+function resetar() {
     isOpen = 0;
-    opt1 = ""; 
+    opt1 = "";
     opt2 = "";
-    finalDeJogo = 0;
 }
 
-function ganhador(){
+function ganhador() {
     finalDeJogo++;
-    if(finalDeJogo == 8){
-        setTimeout(function () {
-        alert("Fim de jogo. Você terminout com  " + contaMovimento + " cliques. \nTente superar seu recorde, clique em ok para jogar novamente.");
-        resetar();
-        embaralhar();
-        }, 500);
+    if (finalDeJogo == 8) {
+        //Chama modal fim de jogo
+        $('#myModal').modal('show');
+        $('.modal-body').append(`<p class="msg-modal">Você terminout com  ${contaMovimento} cliques. <br /><br />Tente superar seu recorde, clique em ok para jogar novamente.</p>`);
+        // inicia um novo jogo
+        $('#new-game').on('click', function () {
+            $('#myModal').modal('hide');
+            if (best = 0 || best < contaMovimento) {
+                best = contaMovimento;
+                $('.best').text(best);
+                resetar();
+                embaralhar();
+            }
+            //remove mensagem do modal
+            $('.msg-modal').remove(); 
+        });
+        finalDeJogo = 0;
+        // setTimeout(function () {
+        //     //$("Fim de jogo. Você terminout com  " + contaMovimento + " cliques. \nTente superar seu recorde, clique em ok para jogar novamente.");
+        // resetar();
+        // embaralhar();
+        // finalDeJogo = 0;
+        // }, 500);
     }
 }
 
