@@ -9,10 +9,14 @@
  *   - add each card's HTML to the page
  */
 
-// Embaralhamento do jogo
-$(function () {
-    embaralhar();
-})
+var contaMovimento = 0; // armazena contagem de cliques
+// TODO: criar array com lista de icones
+var array = []; //armazena icones do hardcoded no html
+var isOpen = 0; //controle de cartas viradas
+var opt1 = ""; //armazena primeiro clique
+var opt2 = ""; // armazena segundo clique
+var finalDeJogo = 0; // controle de fim de jogo
+var best = 0; // armazena melhor jogada
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -29,19 +33,17 @@ function shuffle(array) {
     return array;
 }
 
-var contaMovimento = 0; //contador de cliques
-// TODO: criar array com lista de icones
-var array = []; //armazena icones do hardcoded no html 
-var isOpen = 0; //controle de cartas viradas
-var opt1 = ""; //
-var opt2 = "";
-var finalDeJogo = 0; // controle 
-var best = 0; // armazena melhor jogada
+// Embaralhamento do jogo inicial
+$(function () {
+    embaralhar();
+})
 
+// armazena icones
 $('.card').each(function () {
     array.push($(this).html());
 });
 
+// reseta jogo
 $('.restart').on('click', function () {
     embaralhar();
 });
@@ -51,7 +53,7 @@ $('.deck').on('click', ' .card ', function (evt) {
     contaMovimento++;
     if (!$(this).hasClass('match')) {
         if (!$(this).hasClass('open') && isOpen <= 1) {
-            regrasJogo($(this));
+            controlaClique($(this));
             crush(opt1, opt2, $(this));
         }
         $('.moves').text(contaMovimento)
@@ -59,19 +61,20 @@ $('.deck').on('click', ' .card ', function (evt) {
     console.log(isOpen);
 });
 
-function regrasJogo(clique) {
+//Função de controle de clique
+function controlaClique(clique) {
     opt1 == "" ? opt1 = $(clique).html() : opt2 = $(clique).html();
     $(clique).addClass('open show');
     isOpen++;
 }
 
-
+// Funçao que controla cartas abertas
 function crush(clique1, clique2, clique) {
     if (clique2 != "") {
         if (clique1 == clique2) {
             $('.show').addClass('match');
             $('.show').removeClass('open show');
-            ganhador();
+            finalizaJogo();
         } else {
             setTimeout(function () {
                 $('.show').addClass('wrong');
@@ -87,6 +90,7 @@ function crush(clique1, clique2, clique) {
     }
 }
 
+// Funcão de embaralhamento
 function embaralhar() {
     var contador = 0;
     // zera contagem de movimentos
@@ -102,13 +106,15 @@ function embaralhar() {
     });
 }
 
+// Função que reiniciar os indeicadores
 function resetar() {
     isOpen = 0;
     opt1 = "";
     opt2 = "";
 }
 
-function ganhador() {
+//Funçao que finalizar o jogo
+function finalizaJogo() {
     finalDeJogo++;
     if (finalDeJogo == 8) {
         //Chama modal fim de jogo
@@ -127,27 +133,8 @@ function ganhador() {
             $('.msg-modal').remove();
         });
         finalDeJogo = 0;
-        // setTimeout(function () {
-        //     //$("Fim de jogo. Você terminout com  " + contaMovimento + " cliques. \nTente superar seu recorde, clique em ok para jogar novamente.");
-        // resetar();
-        // embaralhar();
-        // finalDeJogo = 0;
-        // }, 500);
     }
 }
-
-// function runEffect() {
-//     var options = {};
-
-//     $(".card").effect(selectedEffect, options, 500, callback);
-// };
-
-// function callback() {
-//     setTimeout(function () {
-//         $(".card").removeAttr("style").hide().fadeIn();
-//     }, 1000);
-// };
-
 
 
 /*
