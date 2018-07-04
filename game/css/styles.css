@@ -1,0 +1,164 @@
+html {
+    box-sizing: border-box;
+}
+
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    /* width: 100%;
+    height: 100%; */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #2d3c49;
+}
+
+h1 {
+    font-family: Roboto, sans-serif;
+    font-weight: 100;
+}
+
+h2 {
+    color: #7d97ad;
+    font-weight: 300;
+}
+
+h3 {
+    color: #2d3c49;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#meu-cabecalho {
+    margin: auto;
+}
+
+/* Sombra Imagens */
+
+.box-shadow {
+    box-shadow: 4px 8px 10px #ccc;
+}
+
+footer {
+    background-color: rgb(250, 250, 250);
+}
+
+#logotipo-image {
+    width: 150px;
+    height: 58px;
+}
+
+.featured-work img:hover {
+    transform: translateY(-2px);
+    transition: all .2s ease-in-out;
+    box-shadow: 6px 10px 12px #ccc;
+}
+
+#meu-cabecalho h1 {
+    margin: auto;
+}
+
+.exibe-titulo {
+    background-image: linear-gradient(180deg, transparent 65%, rgb(243, 243, 243) 0);
+    background-repeat: no-repeat;
+}
+
+.board {
+    width: 920px;
+    text-align: center;
+}
+
+/* CARD GAME */
+
+.card-game {
+    margin: 20px auto;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.front,
+.back {
+    max-width: 200px;
+    max-height: 200px;
+    padding: 25px 0;
+    text-align: center;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.back {
+    background-color: #137575;
+}
+
+.front {
+    background-color: #e6ffff;
+}
+
+/* END CARD GAME */
+
+/* Extra small devices (phones, 600px and down) */
+
+@media (max-width: 575.98px) {
+    #meu-cabecalho h1 {
+        font-size: 1.5rem;
+        padding-top: 10px;
+    }
+    #logo-box {
+        margin: auto;
+    }
+    #logotipo-image {
+        width: 90px;
+        height: 78px;
+    }
+    #rodape {
+        text-align: center;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #logo-box {
+        margin: auto;
+    }
+    #logotipo-image {
+        width: 150px;
+        height: 58px;
+    }
+}
+
+/* Exibição para dispositivos médios. Ex. tablets */
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #logotipo-image {
+        width: 150px;
+        height: 58px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    #logotipo-image {
+        width: 160px;
+        height: 68px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+    #logotipo-image {
+        width: 170px;
+        height: 78px;
+    }
+}

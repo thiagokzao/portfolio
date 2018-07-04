@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <title>Jogo da Memória</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.css"> <!-- font awesome -->
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="css/memory-card.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="game-header">
+            <h1>Jogo da Memória</h1>
+            <p>Clique nas cartas abaixo e tente fazer as pares</p>
+        </header>
+
+        <section class="score-panel">
+            <ul class="stars">
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+            </ul>
+
+            Movimentos:
+            <span class="moves">0</span>
+            Best:
+            <span class="best"> 0 </span>
+            Tempo:
+            <div class="restart">
+                <i class="fas fa-redo"></i>
+            </div>
+
+            <span id="timer">
+                <time>00:00:00</time>
+            </span>
+
+        </section>
+
+        <ul class="deck">
+            <li class="card">
+                <i class="fas fa-gem"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-paper-plane"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-anchor"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-bolt"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-cube"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-anchor"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-leaf"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-bicycle"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-gem"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-bomb"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-leaf"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-bomb"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-bolt"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-bicycle"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-paper-plane"></i>
+            </li>
+            <li class="card">
+                <i class="fas fa-cube"></i>
+            </li>
+        </ul>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Parabéns</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button id="new-game" type="button" class="btn btn-primary">Jogar novamente</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                <a href="../index.html">voltar</a>
+            </p>
+        </footer>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/memory-game.js"></script>
+</body>
+
+</html>
