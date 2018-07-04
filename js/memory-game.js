@@ -12,8 +12,8 @@
 
  /*
  *TODO: Store variables in local storage
- *TODo: create leadboards
- * 
+ *TODO: create leadboards
+ */
 
 var contaMovimento = 0; // armazena contagem de cliques
 // TODO: criar array com lista de icones
