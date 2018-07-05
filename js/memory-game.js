@@ -153,7 +153,7 @@ function finalizaJogo() {
         clearTimeout(t);
         //Chama modal fim de jogo
         $('#myModal').modal('show');
-        $('.modal-body').append(`<p class="msg-modal">Você terminout com  ${contaMovimento} cliques. <br /><br />Tente superar seu recorde, clique em ok para jogar novamente.</p>`);
+        $('.modal-body').append(`<p class="msg-modal">Você terminout com  ${contaMovimento} cliques. <br /><br />Tente superar seu recorde, clique em jogar novamente.</p>`);
         $('.modal-body').append('<p>Seu tempo: ' +  $('#timer').text() + '</p>');
         // inicia um novo jogo
         $('#new-game').on('click', function () {
