@@ -10,7 +10,7 @@
  */
 
 
- /*
+/*
  *TODO: Store variables in local storage
  *TODO: create leadboards
  */
@@ -74,6 +74,8 @@ $('.deck').on('click', ' .card ', function (evt) {
 // embaralha o jogo
 $('.restart').on('click', function () {
     preparaJogo();
+    finalDeJogo = 0;
+    
 });
 
 //Função de controle de clique
@@ -117,6 +119,7 @@ function preparaJogo() {
 
     //Vira todas cartas para baixo
     $('.card').removeClass('open show match');
+    $('.modal-body').children().remove(); //remove mensagem do modal
 
     //remove icones e adiciona em novas posiçoes
     $('.card').each(function () {
@@ -130,7 +133,9 @@ function preparaJogo() {
     clearTimeout(t);
     iniciaContador = false;
     $('#timer').text("00:00:00")
-    seconds = 0; minutes = 0; hours = 0;
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
 
     //reseta estrelas
     if ($('.stars li').length < 3) {
@@ -157,7 +162,12 @@ function finalizaJogo() {
         //Chama modal fim de jogo
         $('#myModal').modal('show');
         $('.modal-body').append(`<p class="msg-modal">Você terminout com  ${contaMovimento} cliques. <br /><br />Tente superar seu recorde, clique em ok para jogar novamente.</p>`);
-        $('.modal-body').append('<p class="msg-modal">Tempo: ' +  $('#timer').text() + '</p>');
+        $('.modal-body').append('<p class="msg-modal">Tempo: ' + $('#timer').text() + '</p>');
+        if ($('.stars').children().length >= 1) {
+            $('.modal-body').append('<p>Você ganhou: ' + $('.stars').children().length + ' estrela(s)</p>');
+        } else {
+            $('.modal-body').append('<p>Você não ganhou estrelas!!! </p>');
+        }
         // inicia um novo jogo
         $('#new-game').on('click', function () {
             $('#myModal').modal('hide');
@@ -167,7 +177,6 @@ function finalizaJogo() {
                     $('.best').text(record);
                 }
                 controlaCliques();
-                $('.msg-modal').remove(); //remove mensagem do modal
                 preparaJogo();
             }
         });
@@ -175,8 +184,8 @@ function finalizaJogo() {
     }
 }
 
-$('.card').on('click', function(){
-    if (!iniciaContador){
+$('.card').on('click', function () {
+    if (!iniciaContador) {
         timer();
     }
     iniciaContador = true;
