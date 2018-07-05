@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <link rel="stylesheet" href="css/bootstrap-reboot.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.css"> <!-- font awesome -->
+    <link rel="stylesheet" href="css/all.css">
+    <!-- font awesome -->
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="css/memory-card.css">
 
@@ -17,37 +18,47 @@
 <body>
 
     <div class="container">
-        <header class="game-header">
-            <h1>Jogo da Memória</h1>
-            <p>Clique nas cartas abaixo e tente fazer as pares</p>
-        </header>
+        <div class="row">
+            <header class="game-header">
+                <h1>Jogo da Memória</h1>
+                <p>Clique nas cartas abaixo e tente fazer as pares</p>
+            </header>
+        </div>
 
         <section class="score-panel">
-            <ul class="stars">
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-            </ul>
+            <div class="row">
+                <div class="col-sm-6">
+                    Movimentos:
+                    <span class="moves">0</span>
+                    Best:
+                    <span class="best"> 0 </span>
+                </div>
+                <div class="col-sm-6">
+                    <div id="cronometro">Tempo:
+                        <span id="timer">
+                            <time>00:00:00</time>
+                        </span>
+                    </div>
 
-            Movimentos:
-            <span class="moves">0</span>
-            Best:
-            <span class="best"> 0 </span>
-            Tempo:
-            <div class="restart">
-                <i class="fas fa-redo"></i>
+                    <ul class="stars">
+                        <li>
+                            <i class="fa fa-star"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-star"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-star"></i>
+                        </li>
+                    </ul>
+
+                    <div class="restart">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                </div>
+
+
             </div>
-
-            <span id="timer">
-                <time>00:00:00</time>
-            </span>
-
         </section>
 
         <ul class="deck">
