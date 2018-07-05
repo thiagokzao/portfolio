@@ -23,9 +23,9 @@ var opt1 = ""; //armazena primeiro clique
 var opt2 = ""; // armazena segundo clique
 var finalDeJogo = 0; // controle de fim de jogo
 var record = 0; // armazena melhor jogada
-var stars = 3;
-var iniciaContador = false;
-var tempo;
+var stars = 3; // armazena estrelas/rating
+var iniciaContador = false; // controla timer
+var tempo; //armazena o timer
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -74,7 +74,6 @@ $('.deck').on('click', ' .card ', function (evt) {
 // embaralha o jogo
 $('.restart').on('click', function () {
     preparaJogo();
-    $('.msg-modal').remove(); //remove mensagem do modal
 });
 
 //Função de controle de clique
@@ -92,10 +91,14 @@ function crush(clique1, clique2, clique) {
             $('.show').removeClass('open show');
             finalizaJogo();
         } else {
+            //Desabilita click até o efeito finalizar
+            $('.card').addClass('block-cards');
             setTimeout(function () {
                 $('.show').addClass('wrong');
                 setTimeout(function () {
                     $('.show').removeClass('open show wrong');
+                    // Reabilita o click após o timeout
+                    $('.card').removeClass('block-cards');
                 }, 500);
             }, 200);
         }
@@ -154,7 +157,7 @@ function finalizaJogo() {
         //Chama modal fim de jogo
         $('#myModal').modal('show');
         $('.modal-body').append(`<p class="msg-modal">Você terminout com  ${contaMovimento} cliques. <br /><br />Tente superar seu recorde, clique em ok para jogar novamente.</p>`);
-        $('.modal-body').append('<p>Seu tempo: ' +  $('#timer').text() + '</p>');
+        $('.modal-body').append('<p class="msg-modal">Tempo: ' +  $('#timer').text() + '</p>');
         // inicia um novo jogo
         $('#new-game').on('click', function () {
             $('#myModal').modal('hide');
@@ -169,7 +172,6 @@ function finalizaJogo() {
             }
         });
         finalDeJogo = 0;
-        
     }
 }
 
