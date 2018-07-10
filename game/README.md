@@ -8,16 +8,17 @@ Tente formar pares de cartas com o mínimo de tentativas possível.
 
 ## Prerequisites ##
 
---* [Bootstrap 4](https://getbootstrap.com/)
---* [Jquery](https://code.jquery.com/)
---* [Timer from Daniel Hug](https://jsfiddle.net/user/Daniel_Hug/fiddles/)
+- [Bootstrap 4](https://getbootstrap.com/)
+- [Jquery](https://code.jquery.com/)
+- [Timer from Daniel Hug](https://jsfiddle.net/user/Daniel_Hug/fiddles/)
 
 ## Built With ##
 
---* Javascript
---* Jquery
+- Javascript
+- Jquery
 
 ## Author ##
 
---* [Thiago Bernardo Santos](https://github.com/thiagokzao/)
+- [Thiago Bernardo Santos](https://github.com/thiagokzao/)
+- Projeto de conclusão do Nanodegree da Udacity Front-end Developer.
 
