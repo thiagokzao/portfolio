@@ -6,6 +6,8 @@ Esse projeto é um simples jogo da memória feito com Javascript.
 
 Tente formar pares de cartas com o mínimo de tentativas possível. 
 
+Visualizar o projeto do [jogo da memória)[https://thiagokzao.github.io/portfolio/game/memory-game.html]
+
 ## Prerequisites ##
 
 - [Bootstrap 4](https://getbootstrap.com/)
